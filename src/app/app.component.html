@@ -302,6 +302,15 @@
       visibility: hidden;
     }
   }
+  .input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e7e9eb;
+  }
+  .input:focus {
+    outline: none;
+  }
   .cd {
     display: flex;
     flex-direction: column;
@@ -319,7 +328,25 @@
     display: flex;
     flex-wrap: wrap;
     width: 150px;
+    padding: 8px;
     justify-content: space-between;
+  }
+  button {
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #3c7cf3;
+    margin: 5px;
+    cursor: pointer;
+    color: #fff;
+  }
+  button:hover {
+    background-color: orange;
+    transition: 0.3s ease-out;
+    padding-right: 25px;
+  }
+  label {
+    font-size: 1.3em;
   }
 </style>
 
@@ -328,30 +355,29 @@
 <div class="main">
   <div class="card cd">
     <h1>PASSWORD GENERATOR</h1>
-    <label>Enter Length</label>
-    <input type="text" />
+    <br />
+    <label>Desired Password Length</label>
+    <br />
+    <input (input)="onchangeLength($event)" class="input" />
 
     <div class="userInput">
       <label>Use Letters</label>
-      <input type="checkbox" />
+      <input (change)="onChangeUseLetters()" type="checkbox" />
     </div>
     <div class="userInput">
-      <label>Use Letters</label>
-      <input type="checkbox" />
+      <label>Use Number</label>
+      <input (change)="onChangeUseNumbers()" type="checkbox" />
     </div>
     <div class="userInput">
-      <label>Use Letters</label>
-      <input type="checkbox" />
-    </div>
-    <div class="userInput">
-      <label>Use Letters</label>
-      <input type="checkbox" />
+      <label>Use Symbol</label>
+      <input (change)="onChangeUseSymbols()" type="checkbox" />
     </div>
     <div>
       <button (click)="onButtonClick()">Generate !</button>
     </div>
     <label>Your Generated Passord</label>
-    <input type="text" [value]="password" />
+    <input type="text" [value]="password" class="input" />
+    <div>{{ message }}</div>
   </div>
 </div>
 <svg
