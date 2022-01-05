@@ -348,6 +348,11 @@
   label {
     font-size: 1.3em;
   }
+  .box {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
 </style>
 
 <!-- Toolbar -->
@@ -375,8 +380,10 @@
     <div>
       <button [disabled]="!length" (click)="onButtonClick()">Generate !</button>
     </div>
-    <label>Your Generated Passord</label>
-    <input type="text" [value]="password" class="input" />
+    <div class="box" *ngIf="password">
+      <label>Your Generated Passord</label>
+      <input type="text" [value]="password" class="input" />
+    </div>
     <div>{{ message }}</div>
   </div>
 </div>
